@@ -1,1 +1,3 @@
-// Empty, for now
+# Ignore VIM files
+*~
+*sw*

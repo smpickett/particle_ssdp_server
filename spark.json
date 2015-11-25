@@ -1,0 +1,7 @@
+{
+"name": "SSDP",
+"author": "Stephen Pickett <smpickett@gmail.com>",
+"license": "MIT",
+"version": "1.0.0",
+"description": "Support for SSDP Network Discovery"
+}

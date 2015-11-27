@@ -7,5 +7,5 @@ void setup(void)
 
 void loop(void)
 {
-  ssdpServer.ProcessConnection();
+  ssdpServer.processConnection();
 }

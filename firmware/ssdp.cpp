@@ -45,22 +45,22 @@ Ssdp::Ssdp(int webServerPort, const char* xmlFilePath)
     _httpServerPort = webServerPort;
 }
 
-void Ssdp::ProcessConnection()
+void Ssdp::processConnection()
 {
     // Initialize, if required
-    Initialize();
+    initialize();
 
     // Send a keep alive at a regular interval
-    NotifyKeepAlive();
+    notifyKeepAlive();
 
     // Monitor for SSDP requests
-    SsdpParse();
+    ssdpParse();
 
     // Monitor for HTTP requests
-    HttpParse();
+    httpParse();
 }
 
-void Ssdp::Initialize()
+void Ssdp::initialize()
 {
     if (_initialized)
         return;
@@ -99,7 +99,7 @@ void Ssdp::Initialize()
     #endif
 }
 
-void Ssdp::HttpParse()
+void Ssdp::httpParse()
 {
     if (!_spawnWebServer)
         return;
@@ -138,7 +138,7 @@ void Ssdp::HttpParse()
                     #if SSDP_SERIAL_DEBUG_LEVEL > 0
                     Serial.printf("SSDP: Processing GET /%s\r\n", SSDP_DEFAULT_XML_FILENAME);
                     #endif
-                    XmlDescription();
+                    xmlDescription();
                 }
             }
         }
@@ -149,7 +149,7 @@ void Ssdp::HttpParse()
     }
 }
 
-void Ssdp::SsdpParse()
+void Ssdp::ssdpParse()
 {
     int len = _udp.parsePacket();
     if (len > 0)
@@ -173,12 +173,12 @@ void Ssdp::SsdpParse()
           #if SSDP_SERIAL_DEBUG_LEVEL > 0
           Serial.println("SSDP: Processing M-SEARCH");
           #endif
-          Response();
+          response();
         }
     }
 }
 
-void Ssdp::Response()
+void Ssdp::response()
 {
     IPAddress localip = WiFi.localIP();
   char ip[] = "255.255.255.255:65535/";
@@ -193,13 +193,13 @@ void Ssdp::Response()
   _udp.endPacket();
 }
 
-void Ssdp::XmlDescription()
+void Ssdp::xmlDescription()
 {
   _httpClient.println(SSDP_XML_DESCRIPTION);
   _httpClient.stop();
 }
 
-void Ssdp::NotifyKeepAlive()
+void Ssdp::notifyKeepAlive()
 {
     // Periodically send another notify
     if ((millis() % SSDP_DEFAULT_NOTIFY_KEEPALIVE_TIME == 0) && !_notify_timer_sent)

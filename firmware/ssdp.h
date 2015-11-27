@@ -37,21 +37,21 @@ public:
     Ssdp(int webServerPort, const char* xmlFilePath);
 
     // This function must be called on a regular basis (ie, in the loop function)
-    void ProcessConnection();
+    void processConnection();
 
 private:
     // Initializes the class if it hasn't been already
-    void Initialize();
+    void initialize();
     // Will send a 'NOTIFY' broadcast at a specified interval
-    void NotifyKeepAlive();
+    void notifyKeepAlive();
     // Parses SSDP queries
-    void SsdpParse();
+    void ssdpParse();
     // Provides a response to the M-SEARCH requests
-    void Response();
+    void response();
     // Parses HTTP webserver queries
-    void HttpParse();
+    void httpParse();
     // Provides a response to the XML description requests
-    void XmlDescription();
+    void xmlDescription();
 
 private:
     // HTTP Web Server

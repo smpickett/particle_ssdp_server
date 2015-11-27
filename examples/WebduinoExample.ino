@@ -21,7 +21,7 @@ void loop(void)
   int len = 64;
 
   webServer.processConnection(buff, &len);
-  ssdpServer.ProcessConnection();
+  ssdpServer.processConnection();
 }
 
 P(root) = "<html><title>SSDP and Webduino Example</title><body><h2>Welcome to the core!</h2></body></html>";

@@ -4,12 +4,12 @@ This library provides support for implementing  SSDP (Simple Service Discovery P
 
 More about SSDP can be found here: https://en.wikipedia.org/wiki/Simple_Service_Discovery_Protocol
 
-SSDP is a great way of broadcasting the functionality and location of your device to other devices on the network
+SSDP is a great way of broadcasting the functionality and location of your device to other devices on the network.
 
 ![Network Discovery in Windows](/readme_example_network.png)
 
 ## Basic Example
-#### in application.ino
+#### in SimpleExample.ino
 ```
 #include "ssdp.h"
 
@@ -25,7 +25,7 @@ void loop(void)
 ```
 
 ## Example combined with a webserver (such as 'webduino')
-#### in application.ino
+#### in WebduinoExample.ino
 ```
 #include "ssdp.h"
 #include "WebServer.h"
@@ -33,7 +33,7 @@ void loop(void)
 Ssdp ssdpServer(80, "description.xml");
 WebServer webServer("", 80);
 
-/* Webserver functions prototypes */
+/* Webserver function prototypes */
 
 void setup(void)
 {

@@ -12,7 +12,7 @@
 // 0 - off (no serial debugging)
 // 1 - status/processing information
 // 2 - trace (including packets)
-#define SSDP_SERIAL_DEBUG_LEVEL 1
+#define SSDP_SERIAL_DEBUG_LEVEL 0
 
 
 // Interface -------------------------------------------------------------------

@@ -28,23 +28,19 @@ void loop(void)
 #### in application.ino
 ```
 #include "ssdp.h"
-#include "webserver.h"
+#include "WebServer.h"
 
 Ssdp ssdpServer(80, "description.xml");
-Webserver webServer("", 80);
+WebServer webServer("", 80);
 
-void xmlDescription(WebServer &server, WebServer::ConnectionType type, char *url_tail, bool tail_complete)
-{
-  /* Process and respond to XML request */
-  /* standard webduino response */
-  /* ... */
-}
+/* Webserver functions prototypes */
 
 void setup(void)
 {
   /* webserver setup */
-  webserver.addCommand("description.xml", &xmlDescription);
-  webserver.begin();
+  webServer.setDefaultCommand(&rootCmd);
+  webServer.addCommand("description.xml", &xmlDescriptionCmd);
+  webServer.begin();
 }
 
 void loop(void)
@@ -52,8 +48,9 @@ void loop(void)
   char buff[64];
   int len = 64;
 
-  webserver.processConnection(buff, &len);
+  webServer.processConnection(buff, &len);
   ssdpServer.ProcessConnection();
 }
-```
 
+/* Webserver functions & html/xml messages */
+```

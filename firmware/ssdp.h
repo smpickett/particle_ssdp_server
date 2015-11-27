@@ -20,13 +20,13 @@
 //  - Provide 'NOTIFY' broadcasts at a regular interval
 //  - Respond to 'SEARCH' broadcasts
 //  - Provide an XML description
-class Ssdp
+class SSDP
 {
 public:
     // Initializes the object
     // The 'webServerPort' will be used to listen for incoming TCP web requests
     // and the Ssdp object will spawn its own (very basic) webserver
-    Ssdp(int webServerPort = SSDP_DEFAULT_WEBSERVER_PORT);
+    SSDP(int webServerPort = SSDP_DEFAULT_WEBSERVER_PORT);
 
     // Initializes the object
     // The 'xmlFilePath' will be used in responses to SSDP queries to indicate
@@ -34,7 +34,7 @@ public:
     // port specified by 'webServerPort'.
     // It is the users responsiblity to setup a webserver outside the SSDP framework
     // to respond to XML file requests.
-    Ssdp(int webServerPort, const char* xmlFilePath);
+    SSDP(int webServerPort, const char* xmlFilePath);
 
     // This function must be called on a regular basis (ie, in the loop function)
     void processConnection();

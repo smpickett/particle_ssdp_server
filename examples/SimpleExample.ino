@@ -1,6 +1,6 @@
-#include "ssdp.h"
+#include "SSDP.h"
 
-Ssdp ssdpServer(80);
+SSDP ssdpServer(80);
 
 void setup(void)
 { }

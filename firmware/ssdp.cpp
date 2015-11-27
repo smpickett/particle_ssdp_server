@@ -1,7 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include "application.h"
-#include "ssdp.h"
+#include "SSDP.h"
 using namespace std;
 
 // Configuration ---------------------------------------------------------------
@@ -29,7 +29,7 @@ const char *SSDP_XML_DESCRIPTION = "HTTP/1.1 200 OK\r\n"
   "</root>\r\n";
 
 // SSDP Implementation ---------------------------------------------------------
-Ssdp::Ssdp(int webServerPort)
+SSDP::SSDP(int webServerPort)
     :_httpServer(_httpServerPort)
 {
     _spawnWebServer = true;
@@ -37,7 +37,7 @@ Ssdp::Ssdp(int webServerPort)
     _httpServerPort = webServerPort;
 }
 
-Ssdp::Ssdp(int webServerPort, const char* xmlFilePath)
+SSDP::SSDP(int webServerPort, const char* xmlFilePath)
     :_httpServer(0)
 {
     _spawnWebServer = false;
@@ -45,7 +45,7 @@ Ssdp::Ssdp(int webServerPort, const char* xmlFilePath)
     _httpServerPort = webServerPort;
 }
 
-void Ssdp::processConnection()
+void SSDP::processConnection()
 {
     // Initialize, if required
     initialize();
@@ -60,7 +60,7 @@ void Ssdp::processConnection()
     httpParse();
 }
 
-void Ssdp::initialize()
+void SSDP::initialize()
 {
     if (_initialized)
         return;
@@ -99,7 +99,7 @@ void Ssdp::initialize()
     #endif
 }
 
-void Ssdp::httpParse()
+void SSDP::httpParse()
 {
     if (!_spawnWebServer)
         return;
@@ -149,7 +149,7 @@ void Ssdp::httpParse()
     }
 }
 
-void Ssdp::ssdpParse()
+void SSDP::ssdpParse()
 {
     int len = _udp.parsePacket();
     if (len > 0)
@@ -178,7 +178,7 @@ void Ssdp::ssdpParse()
     }
 }
 
-void Ssdp::response()
+void SSDP::response()
 {
     IPAddress localip = WiFi.localIP();
   char ip[] = "255.255.255.255:65535/";
@@ -193,13 +193,13 @@ void Ssdp::response()
   _udp.endPacket();
 }
 
-void Ssdp::xmlDescription()
+void SSDP::xmlDescription()
 {
   _httpClient.println(SSDP_XML_DESCRIPTION);
   _httpClient.stop();
 }
 
-void Ssdp::notifyKeepAlive()
+void SSDP::notifyKeepAlive()
 {
     // Periodically send another notify
     if ((millis() % SSDP_DEFAULT_NOTIFY_KEEPALIVE_TIME == 0) && !_notify_timer_sent)

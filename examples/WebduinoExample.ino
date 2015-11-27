@@ -1,7 +1,7 @@
-#include "ssdp.h"
+#include "SSDP.h"
 #include "WebServer.h"
 
-Ssdp ssdpServer(80, "description.xml");
+SSDP ssdpServer(80, "description.xml");
 WebServer webServer("", 80);
 
 void xmlDescriptionCmd(WebServer &server, WebServer::ConnectionType type, char *url_tail, bool tail_complete);

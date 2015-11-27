@@ -11,9 +11,9 @@ SSDP is a great way of broadcasting the functionality and location of your devic
 ## Basic Example
 #### in SimpleExample.ino
 ```
-#include "ssdp.h"
+#include "SSDP.h"
 
-Ssdp ssdpServer(80);
+SSDP ssdpServer(80);
 
 void setup(void)
 { }
@@ -27,10 +27,10 @@ void loop(void)
 ## Example combined with a webserver (such as 'webduino')
 #### in WebduinoExample.ino
 ```
-#include "ssdp.h"
+#include "SSDP.h"
 #include "WebServer.h"
 
-Ssdp ssdpServer(80, "description.xml");
+SSDP ssdpServer(80, "description.xml");
 WebServer webServer("", 80);
 
 /* Webserver function prototypes */

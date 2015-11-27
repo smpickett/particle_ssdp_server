@@ -1,3 +1,4 @@
 # Ignore VIM files
 *~
 *sw*
+*.bin

@@ -1,6 +1,8 @@
 #ifndef ssdp_h
 #define ssdp_h
 
+#include "application.h"
+
 // Configuration ---------------------------------------------------------------
 #define SSDP_DEFAULT_WEBSERVER_PORT         (80)
 #define SSDP_DEFAULT_NOTIFY_KEEPALIVE_TIME  (10000)     // in [ms]

@@ -187,7 +187,7 @@ void SSDP::ssdpParse()
         _udp.read(_rxPacketBuffer, SSDP_RX_PACKET_MAX_SIZE);
         #if SSDP_SERIAL_DEBUG_LEVEL > 1
         Serial.println("SSDP: /-------------------------------");
-        Serial.println(rxPacketBuffer);
+        Serial.println(_rxPacketBuffer);
         Serial.println("SSDP: -------------------------------/");
         #endif
 

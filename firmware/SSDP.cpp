@@ -35,21 +35,22 @@ const IPAddress SSDP_IP(239, 255, 255, 250);
 
 const char *SSDP_XML_DESCRIPTION = "HTTP/1.1 200 OK\r\n"
   "Content-Type: text/xml\r\n\r\n"
-  "<?xml version='1.0'?>\r\n"
+  "<?xml version='1.0'?> "
   "<root xmlns='urn:schemas-upnp-org:device-1-0'>"
   "<device>"
   "<deviceType>urn:schemas-upnp-org:device:Basic:1</deviceType>"
-  "<friendlyName>Particle Photon</friendlyName>"
+  "<friendlyName>Basement Freezer Monitor</friendlyName>"
   "<manufacturer>Stephen Pickett</manufacturer>"
-  "<manufacturerURL>https://github.com/smpickett/particle_ssdp_server</manufacturerURL>"
-  "<modelName>Photon</modelName>"
-  "<modelNumber>Photon Core</modelNumber>"
-  "<modelURL>https://www.particle.io/</modelURL>"
-  "<presentationURL>/</presentationURL>"
+  "<manufacturerURL>https://github.com/smpickett/</manufacturerURL>"
+  "<modelName>Proto A</modelName>"
+  "<modelNumber>T1000</modelNumber>"
+  "<modelURL>https://github.com/smpickett/particle_ssdp_server</modelURL>"
+  "<presentationURL>https://app.losant.com/#/dashboards/57ac01b6ee0bf80100afa2c3</presentationURL>"
+  "<deviceURL>https://app.losant.com/#/dashboards/57ac01b6ee0bf80100afa2c3</deviceURL>"
   "<serialNumber>1</serialNumber>"
   "<UDN>uuid:abcdefgh-7dec-11d0-a765-7499692d3040</UDN>"
   "</device>"
-  "</root>\r\n";
+  "</root>\n";
 
 // SSDP Implementation ---------------------------------------------------------
 SSDP::SSDP(int webServerPort)
@@ -218,7 +219,7 @@ void SSDP::response()
 
 void SSDP::xmlDescription()
 {
-  _httpClient.println(SSDP_XML_DESCRIPTION);
+  _httpClient.print(SSDP_XML_DESCRIPTION);
   _httpClient.stop();
 }
 
